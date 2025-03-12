@@ -71,3 +71,11 @@ start_sequence = "Текст"
 generated_text = generate_text(model, start_sequence)
 print("Сгенерированный текст:")
 print(generated_text)
+start_sequence = "На рек"
+generated_text = generate_text(model, start_sequence)
+print("Сгенерированный текст:")
+print(generated_text)
+start_sequence = "Невский"
+generated_text = generate_text(model, start_sequence)
+print("Сгенерированный текст:")
+print(generated_text)
