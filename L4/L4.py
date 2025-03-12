@@ -21,24 +21,22 @@ model = models.Sequential([
     layers.Conv2D(64, (3, 3), activation='relu'),
     layers.MaxPooling2D((2, 2)),
     layers.Conv2D(64, (3, 3), activation='relu'),
-
     # Полносвязные слои
     layers.Flatten(),
     layers.Dense(64, activation='relu'),
+    layers.Dropout(0.5),
     layers.Dense(10, activation='softmax')
 ])
 
 model.summary()
-
 
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
 history = model.fit(train_images, train_labels,
-                    epochs=30,
+                    epochs=15,
                     validation_data=(test_images, test_labels))
-
 
 # Построение графиков точности и потерь
 plt.plot(history.history['accuracy'], label='Training Accuracy')
@@ -58,7 +56,7 @@ class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
 # Визуализация предсказаний
 plt.figure(figsize=(10, 10))
 for i in range(9):
-    plt.subplot(3, 3, i+1)
+    plt.subplot(3, 3, i + 1)
     plt.imshow(test_images[i])
     prediction = np.argmax(model.predict(test_images[i][np.newaxis, ...]))
     true_label = np.argmax(test_labels[i])

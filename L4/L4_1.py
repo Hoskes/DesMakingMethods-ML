@@ -116,4 +116,4 @@ for i in range(10):
     plt.title(f"True: {true_label}\nPred: {pred_label}")
     plt.axis('off')
 plt.show()
-# 
+#
